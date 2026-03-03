@@ -83,7 +83,18 @@ const allowedRedirects = [
 ];
 
 if (allowedRedirects.includes(req.query.redirect)) {
+const allowedRedirects = [
+  '/dashboard',
+  '/profile',
+  '/settings'
+];
+
+if (allowedRedirects.includes(req.query.redirect)) {
   res.redirect(req.query.redirect);
+} else {
+  res.redirect('/dashboard');
+  // or res.status(400).send('Invalid redirect URL');
+}
 } else {
   res.redirect('/dashboard');
   // or throw an error, depending on your application's requirements

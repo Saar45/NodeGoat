@@ -75,7 +75,38 @@ MongoClient.connect(db, (err, db) => {
     }));
 
     // Enable session management using express middleware
-    app.use(session({
+const session = require('express-session');
+app.use(session({
+  secret: 'your-secret-key',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    expires: new Date(Date.now() + 3600000), // 1 hour
+    httpOnly: true,
+    secure: true
+  }
+}));
+app.use(session({
+  name: 'session',
+  secret: 'your-secret',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    domain: 'your-domain.com',
+    path: '/',
+    httpOnly: true,
+    secure: true
+  }
+}));
+app.use(session({
+  name: 'mySessionId',
+  secret: 'secretKey',
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: true
+  }
+}));
         // genid: (req) => {
         //    return genuuid() // use UUIDs for session IDs
         //},
