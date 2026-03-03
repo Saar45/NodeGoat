@@ -10,7 +10,8 @@ services:
     ports:
       - "4000:4000"
 
-  mongo:
+read_only: true
+  - no-new-privileges:true
     image: mongo:4.4
     user: mongodb
     expose:
