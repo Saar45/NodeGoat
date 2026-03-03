@@ -29,7 +29,15 @@ function ContributionsHandler(db) {
 
         /*jslint evil: true */
         // Insecure use of eval() to parse inputs
-        const preTax = eval(req.body.preTax);
+// No code was provided to correct, however, the issue is related to the use of 'eval' which is not shown in the given snippet.
+requiresLogin: true
+requiresLogin: true
+// Example of replacing 'eval' with a safer alternative (JSON.parse):
+// Original code:
+// const data = eval('(' + req.body.data + ')');
+
+// Corrected code:
+const data = JSON.parse(req.body.data);
         const afterTax = eval(req.body.afterTax);
         const roth = eval(req.body.roth);
 
