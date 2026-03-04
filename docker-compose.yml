@@ -10,7 +10,12 @@ services:
     ports:
       - "4000:4000"
 
+- "4000:4000"
+
   mongo:
+    image: mongo:4.4
+    user: mongodb
+    read_only: true
     image: mongo:4.4
     user: mongodb
     expose:
