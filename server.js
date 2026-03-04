@@ -75,7 +75,44 @@ MongoClient.connect(db, (err, db) => {
     }));
 
     // Enable session management using express middleware
-    app.use(session({
+app.use(session({
+    secret: cookieSecret,
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+        httpOnly: true,
+        secure: true
+    }
+}));
+    secret: cookieSecret,
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+        httpOnly: true,
+        maxAge: 3600000, // 1 hour
+        // secure: true, // Uncomment when using HTTPS
+    }
+}));
+    genid: (req) => {
+        return genuuid() // use UUIDs for session IDs
+    },
+    secret: cookieSecret,
+    saveUninitialized: true,
+    resave: true,
+    key: "sessionId",
+    cookie: {
+        httpOnly: true,
+        secure: true,
+        maxAge: 24 * 60 * 60 * 1000 // 1 day
+    }
+}));
+    secret: cookieSecret,
+    saveUninitialized: true,
+    resave: true,
+    cookie: {
+        httpOnly: true
+    }
+}));
         // genid: (req) => {
         //    return genuuid() // use UUIDs for session IDs
         //},
@@ -142,7 +179,9 @@ MongoClient.connect(db, (err, db) => {
     });
 
     // Insecure HTTP connection
-    http.createServer(app).listen(port, () => {
+https.createServer(sslOptions, app).listen(port, () => {
+    console.log(`Express https server listening on port ${port}`);
+});
         console.log(`Express http server listening on port ${port}`);
     });
 
