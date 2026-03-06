@@ -83,7 +83,19 @@ const allowedRedirects = [
 ];
 
 if (allowedRedirects.includes(req.query.redirect)) {
+const allowedRedirects = [
+  '/dashboard',
+  '/settings',
+  // add other allowed redirects here
+];
+
+if (allowedRedirects.includes(req.query.redirect)) {
   res.redirect(req.query.redirect);
+} else if (req.query.redirect && req.query.redirect.startsWith('/')) {
+  res.redirect(req.query.redirect);
+} else {
+  res.redirect('/dashboard');
+}
 } else {
   res.redirect('/dashboard');
   // or throw an error, depending on your application's requirements

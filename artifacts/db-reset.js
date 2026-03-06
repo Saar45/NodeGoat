@@ -16,14 +16,17 @@ const USERS_TO_INSERT = [
         "firstName": "Node Goat",
         "lastName": "Admin",
         "password": "Admin_123",
-        //"password" : "$2a$10$8Zo/1e8KM8QzqOKqbDlYlONBOzukWXrM.IiyzqHRYDXqwB3gzDsba", // Admin_123
+"lastName": "Admin",
+"password": "$2a$10$8Zo/1e8KM8QzqOKqbDlYlONBOzukWXrM.IiyzqHRYDXqwB3gzDsba",
+"isAdmin": true
         "isAdmin": true
     }, {
         "_id": 2,
         "userName": "user1",
         "firstName": "John",
         "lastName": "Doe",
-        "benefitStartDate": "2030-01-10",
+"benefitStartDate": "2030-01-10",
+"password": "$2a$10$RNFhiNmt2TTpVO9cqZElb.LQM9e1mzDoggEHufLjAnAKImc6FNE86"
         "password": "User1_123"
         // "password" : "$2a$10$RNFhiNmt2TTpVO9cqZElb.LQM9e1mzDoggEHufLjAnAKImc6FNE86",// User1_123
     }, {
